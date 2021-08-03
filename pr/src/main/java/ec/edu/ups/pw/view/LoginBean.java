@@ -64,11 +64,12 @@ public class LoginBean implements Serializable {
   }
   
   public void cerrarSesion() {
+	  FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("userid", null);
     FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
   }
   
   public String volverLogin() {
-    return "../../log.xhtml.";
+    return "../../log.xhtml";
   }
   
  
