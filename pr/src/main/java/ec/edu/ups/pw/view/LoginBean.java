@@ -68,7 +68,7 @@ public class LoginBean implements Serializable {
   }
   
   public String volverLogin() {
-    return "../../log.xhtml";
+    return "../../log.xhtml.";
   }
   
  
