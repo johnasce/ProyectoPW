@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+
+<!-- 
+						<h:outputText value="Codigo: " />
+						<h:inputText value="#{produ.id_producto}" />
+						<h:outputText value="Codigo Categoria: " />
+						<h:inputText value="#{categoriaBean.categoria.id_categoria}" />
+						 -->
+
+<h:body>
+	<h:form>
+		<p:panel header="Ingresar Categorias">
+			<p:dataGrid value="#{productoBean.newProducto}" var="produ">
+				<p:panel header="Categoria">
+					<h:panelGrid columns="2">
+
+						<h:outputText value="Nombre: " />
+						<h:inputText value="#{produ.nombre}" />
+
+						<h:outputText value="Precio Venta: " />
+						<h:inputText value="#{produ.precio}" />
+
+						<h:outputText value="Precio Compra: " />
+						<h:inputText value="#{produ.precio_compra}" />
+
+						<h:outputText value="Stock: " />
+						<h:inputText value="#{produ.stock}" />
+
+
+
+						<h:outputText value="Nombre Categoria: " />
+						<h:inputText value="#{produ.categoria.nombre}" />
+
+
+						<p:commandButton value="Agregar +" update="@form"
+							actionListener="#{productoBean.guardarProductoCategoria()}" />
+					</h:panelGrid>
+				</p:panel>
+			</p:dataGrid>
+
+			<p:dataTable value="#{productoBean.productos}" var="p">
+
+				<p:column headerText="Nombre Producto" filterBy="#{p.nombre}"
+					filterMatchMode="contains">
+					<h:outputText value="#{p.nombre} " />
+				</p:column>
+
+				<p:column headerText="Precio Venta">
+					<h:outputText value="#{p.precio} " />
+				</p:column>
+
+				<p:column headerText="Precio Compra">
+					<h:outputText value="#{p.precio_compra} " />
+				</p:column>
+
+				<p:column headerText="Stock">
+					<h:outputText value="#{p.stock} " />
+				</p:column>
+
+				<p:column headerText="Categoria" filterBy="#{p.categoria.nombre}"
+					filterMatchMode="contains">
+					<h:outputText value="#{p.categoria.nombre}" />
+				</p:column>
+
+
+
+			</p:dataTable>
+
+
+		</p:panel>
+
+
+	</h:form>
+</h:body>
+</html>

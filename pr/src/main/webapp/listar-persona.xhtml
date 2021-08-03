@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+
+
+<body>
+	<!-- 
+						<h:outputText value="Codigo: " />
+						<h:outputText value="#{persona.id_persona}" />
+						
+						<p:column headerText="CODIGO" >
+					<h:outputText value="#{per.id_persona}" />
+				</p:column> -->
+
+	<h:form>
+		<p:panel header="Ingresar Personas">
+			<p:dataGrid value="#{personaBean.newPersona}" var="persona">
+				<p:panel header="Persona">
+					<h:panelGrid columns="2">
+						<h:outputText value="Cedula: " />
+						<h:inputText value="#{persona.cedula}" id="txtCedula"/>
+						<h:outputText value="Nombre: " />
+						<h:inputText value="#{persona.nombres}" id="txtNombre"/>
+						<h:outputText value="Usuario: " />
+						<h:inputText value="#{persona.usuario}" id="txtUsuario"/>
+						<h:outputText value="Password: " />
+						<h:inputText value="#{persona.password}" id="txtPassword"/>
+						<h:outputText value="ROL; " />
+						<h:inputText value="#{persona.rol}" id="txtRol"/>
+
+						<p:commandButton value="Agregar +" update="@form"
+							actionListener="#{personaBean.actionGuardarUsuario()}" />
+					</h:panelGrid>
+				</p:panel>
+			</p:dataGrid>
+
+			<p:dataTable id="tblPer" value="#{personaBean.personas}" var="per">
+
+				<p:column headerText="NOMBRE" filterBy="#{per.nombres}"
+					filterMatchMode="contains">
+					<h:outputText value="#{per.nombres} " />
+				</p:column>
+
+				<p:column headerText="CEDULA">
+					<h:outputText value="#{per.cedula} " />
+				</p:column>
+
+				<p:column headerText="USUARIO">
+					<h:outputText value="#{per.usuario} " />
+				</p:column>
+
+				<p:column headerText="PASWORD">
+					<h:outputText value="#{per.password} " />
+				</p:column>
+
+				<p:column headerText="ROL">
+					<h:outputText value="#{per.rol} " />
+				</p:column>
+
+			</p:dataTable>
+		</p:panel>
+
+	</h:form>
+</body>
+</html>

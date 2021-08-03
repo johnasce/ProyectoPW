@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head></h:head>
+<!-- <h:outputLabel value="Codigo Persona: " />
+			<h:inputText value="#{personaBean.newPersona.id_persona}" /> -->
+<body>
+	<h1>Ingresar Personas</h1>
+	<h:form>
+		<h:panelGrid columns="2">
+
+			<h:outputLabel value="Nombres: " />
+			<h:inputText value="#{personaBean.newPersona.nombres}" />
+			<h:outputLabel value="Cedula: " />
+			<h:inputText value="#{personaBean.newPersona.cedula}" />
+			<h:outputLabel value="Usuario: " />
+			<h:inputText value="#{personaBean.newPersona.usuario}" />
+			<h:outputLabel value="Password: " />
+			<h:inputText value="#{personaBean.newPersona.password}" />
+			<h:outputLabel value="Rol: " />
+			<h:inputText value="#{personaBean.newPersona.rol}" />
+
+
+
+		</h:panelGrid>
+	</h:form>
+	<h:commandButton action="#{personaBean.doGuardarUsuario()}"
+		value="Registrar">
+		<f:ajax render="tblPersonas" execute="@this" />
+	</h:commandButton>
+	<h:dataTable value="#{personaBean.personas}" var="persona"
+		id="tblPersonas">
+		<h:column>
+			<f:facet name="header">Nombres</f:facet>
+				#{persona.nombres}
+			</h:column>
+		<h:column>
+			<f:facet name="header">Cedula</f:facet>
+				#{persona.cedula}
+			</h:column>
+		<h:column>
+			<f:facet name="header">Usuario</f:facet>
+				#{persona.usuario}
+			</h:column>
+		<h:column>
+			<f:facet name="header">Password</f:facet>
+				#{persona.password}
+			</h:column>
+		<h:column>
+			<f:facet name="header">Rol</f:facet>
+				#{persona.rol}
+			</h:column>
+	</h:dataTable>
+</body>
+</html>
