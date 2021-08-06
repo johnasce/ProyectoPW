@@ -8,7 +8,11 @@
 <h:head></h:head>
 <h:body>
 	<h:form>
-		<p:panel header="Datos de Producto">
+		<p:panel header="Productos de Venta">
+			<p:commandButton
+					value="Ir al Carrito Compras" action="/pagar-carrito.xhtml?faces-redirect=true" />
+			<p:commandButton
+					value="Iniciar Sesion" action="/log.xhtml?faces-redirect=true" />
 			<p:dataGrid value="#{productoBean.productos}" var="p">
 				<p:panel header="Producto">
 					<h:panelGrid columns="2">
@@ -21,21 +25,22 @@
 						<h:outputText value="Categoria Nombre: " />
 						<h:outputText value="#{p.categoria.nombre}" />
 
-						<p:commandButton value="Agregar" update="@form"
+						<p:commandButton value="Agregar Carrito" update="@form"
 							icon="fa fa-cart-plus"
 							actionListener="#{productoBean.actionListenerAgregarProducto(p)}" />
 					</h:panelGrid>
 				</p:panel>
 			</p:dataGrid>
-
-			<p:dataTable value="#{productoBean.carrito}" var="c">
+			
+			<p:panel header="Visualizacion Previa de lo que se agrego al carrito de Compras">
+				<p:dataTable value="#{productoBean.carrito}" var="c">
 				<p:column headerText="CODIGO">
 					<h:outputText value="#{c.id_producto} " />
 				</p:column>
 				<p:column headerText="NOMBRE">
 					<h:outputText value="#{c.nombre} " />
 					<f:facet name="footer">
-						<h:outputText value="SUMA TOTAL" />
+						<h:outputText value="Sub TOTAL" />
 					</f:facet>
 				</p:column>
 				<p:column headerText="PRECIO">
@@ -52,6 +57,8 @@
 				</p:column>
 
 			</p:dataTable>
+			</p:panel>
+			
 		</p:panel>
 
 	</h:form>

@@ -11,11 +11,9 @@
 <body>
 	<h1>Permisos insuficientes</h1>
 	<h:form>
-		<!-- 
-		
-		 -->
-		<p:commandButton action="#{loginBean.volverLogin()}"
-			value="Ir LogIn" />
+	
+		<p:commandButton actionListener="#{loginBean.volverLogin()}"
+			value="Ir LogIn" action="/log.xhtml"/>
 			
 	</h:form>
 

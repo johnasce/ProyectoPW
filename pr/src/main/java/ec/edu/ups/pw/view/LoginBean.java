@@ -12,7 +12,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
-@SessionScoped
+@ViewScoped
 public class LoginBean implements Serializable {
   @Inject
   private PersonaON personaON;
@@ -64,7 +64,6 @@ public class LoginBean implements Serializable {
   }
   
   public void cerrarSesion() {
-	  FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("userid", null);
     FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
   }
   

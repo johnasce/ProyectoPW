@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head> 
+<body> 
+
+	<h:form>
+		<p:panel header="Carrito Compras">
+			<p:commandButton value="Ver mas Productos" action="/productos.xhtml?faces-redirect=true" />
+			
+			<p:dataGrid value="#{pagarBean.factCabecera.cliente}" var="clie">
+				<p:panel header="Cliente">
+					<h:panelGrid columns="2">
+					
+						<h:outputText value="Cedula: " />
+						<h:inputText value="#{clie.cedula}" id="txtCedula"/>
+						
+						<h:outputText value="Nombre: " />
+						<h:inputText value="#{clie.nombres}" id="txtNombres"/>
+						
+						<h:outputText value="Direccion " />
+						<h:inputText value="#{clie.direccion}" id="txtDireccion"/>
+						
+						<h:outputText value="Email " />
+						<h:inputText value="#{clie.correo}" id="txtEmail"/>
+						
+						<h:outputText value="telefono " />
+						<h:inputText value="#{clie.telefono}" id="txtTelefono"/>
+						
+						<h:column />
+						<p:commandButton value="Guardar Cliente" update="@form" 
+						action="#{pagarBean.cargarCliente()}" />
+					</h:panelGrid>
+				</p:panel>
+			</p:dataGrid>
+
+			<p:dataTable value="#{productoBean.carrito}" var="c">
+				<p:column headerText="CODIGO">
+					<h:outputText value="#{c.id_producto} " />
+				</p:column>
+				<p:column headerText="NOMBRE">
+					<h:outputText value="#{c.nombre} " />
+					<f:facet name="footer">
+						<h:outputText value="TOTAL" />
+					</f:facet>
+				</p:column>
+				<p:column headerText="PRECIO">
+					<h:outputText value="#{c.precio} " />
+					
+					<f:facet name="footer">
+						<h:outputText value="#{productoBean.tot}">
+							<f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
+						</h:outputText>
+					</f:facet>
+				</p:column>
+				<p:column>
+					<p:commandButton value="Elimnar" update="@form" icon="fa fa-close"
+						actionListener="#{productoBean.actionListenerEliminarProducto(c)}" />
+				</p:column>
+
+			</p:dataTable>
+			
+		</p:panel>
+
+	</h:form>
+
+</body> 
+</html>

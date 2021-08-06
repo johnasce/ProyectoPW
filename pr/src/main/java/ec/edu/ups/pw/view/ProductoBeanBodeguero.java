@@ -13,8 +13,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
-@SessionScoped
-public class ProductoBean implements Serializable {
+@ViewScoped
+public class ProductoBeanBodeguero implements Serializable {
   private Producto newProducto = new Producto();
   
   @Inject
@@ -31,7 +31,7 @@ public class ProductoBean implements Serializable {
   
   private double totalCarrito;
   
-  private double tot;
+  
   
   @PostConstruct
   public void init() {
@@ -53,13 +53,12 @@ public class ProductoBean implements Serializable {
   public void actionListenerAgregarProducto(Producto p) {
     this.carrito = this.productoON.agregarProductoCarrito(this.carrito, p);
     this.totalCarrito = this.productoON.calcularTotalCarrito(this.carrito);
-    this.tot = productoON.calcularTotal(carrito);
+    
   }
   
   public void actionListenerEliminarProducto(Producto p) {
     this.carrito = this.productoON.eliminarPoductoCarrito(this.carrito, p.getId_producto());
     this.totalCarrito = this.productoON.calcularTotalCarrito(this.carrito);
-    this.tot = productoON.calcularTotal(carrito);
   }
   
   public Producto getNewProducto() {
@@ -93,12 +92,8 @@ public class ProductoBean implements Serializable {
   public void setTotalCarrito(double totalCarrito) {
     this.totalCarrito = totalCarrito;
   }
-  
-  public double getTot() {
-		return tot;
-	}
 
-	public void setTot(double tot) {
-		this.tot = tot;
-	}
+
+  
+  
 }

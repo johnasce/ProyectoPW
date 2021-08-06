@@ -8,16 +8,10 @@
 
 
 <body>
-	<!-- 
-						<h:outputText value="Codigo: " />
-						<h:outputText value="#{persona.id_persona}" />
-						
-						<p:column headerText="CODIGO" >
-					<h:outputText value="#{per.id_persona}" />
-				</p:column> -->
 
 	<h:form>
 		<p:panel header="Ingresar Personas">
+		<p:commandButton value="Menu Principal Administrador" action="/admin/prin.xhtml?faces-redirect=true" />
 			<p:dataGrid value="#{personaBean.newPersona}" var="persona">
 				<p:panel header="Persona">
 					<h:panelGrid columns="2">

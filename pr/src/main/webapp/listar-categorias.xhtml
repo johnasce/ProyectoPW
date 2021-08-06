@@ -16,7 +16,8 @@
 <h:body>
 	<h:form>
 		<p:panel header="Ingresar Categorias">
-			<p:dataGrid value="#{productoBean.newProducto}" var="produ">
+			<p:commandButton value="Menu Principal" action="/admin/prin.xhtml?faces-redirect=true" />
+			<p:dataGrid value="#{productoBeanBodeguero.newProducto}" var="produ">
 				<p:panel header="Categoria">
 					<h:panelGrid columns="2">
 
@@ -39,12 +40,12 @@
 
 
 						<p:commandButton value="Agregar +" update="@form"
-							actionListener="#{productoBean.guardarProductoCategoria()}" />
+							actionListener="#{productoBeanBodeguero.guardarProductoCategoria()}" />
 					</h:panelGrid>
 				</p:panel>
 			</p:dataGrid>
 
-			<p:dataTable value="#{productoBean.productos}" var="p">
+			<p:dataTable value="#{productoBeanBodeguero.productos}" var="p">
 
 				<p:column headerText="Nombre Producto" filterBy="#{p.nombre}"
 					filterMatchMode="contains">

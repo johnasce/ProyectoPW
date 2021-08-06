@@ -6,15 +6,35 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<f:event listener="#{loginBean.verificarSesion()}" type="preRenderView" />
+	<f:event type="preRenderView" listener="#{loginBean.verificarSesion()}"  />
 </h:head>
 <h:body>
-	<h1>PAGINA PRINCIPAL BODEGUERO</h1>
+	
 
 	<h:form>
-		<p:commandButton actionListener="#{loginBean.cerrarSesion()}"
-			value="Cerrar Sesion" />
-	</h:form>
+		<div id="top">
+			<p:menubar>
+				
+				<f:facet name="options">
+					<p:commandButton  actionListener="#{loginBean.cerrarSesion()}"
+					value="Cerrar Sesion" action="/log.xhtml" />
+				</f:facet>
+			</p:menubar>
+		</div>
+		
+		<h1>PAGINA PRINCIPAL BODEGUERO</h1>
+		<h3>Menu</h3>
+		<p:menu toggleable="true">
 
+	        <p:submenu label="Categorias">
+	            <p:menuitem value="Agregar" action="/listar-categorias.xhtml?faces-redirect=true" icon="pi pi-refresh"/>
+	        </p:submenu>
+	        <p:submenu label="Productos">
+	            <p:menuitem value="Ver Productos" action="/productos.xhtml?faces-redirect=true" icon="pi pi-refresh"/>
+	        </p:submenu>
+	    </p:menu>
+			
+	</h:form>
+		
 </h:body>
 </html>

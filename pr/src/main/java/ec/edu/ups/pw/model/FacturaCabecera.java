@@ -22,7 +22,7 @@ public class FacturaCabecera {
   private float iva;
   
   @ManyToOne
-  @JoinColumn(name = "id_cliente")
+  @JoinColumn(name = "cedula")
   private Cliente cliente;
   
   public int getId_factura_cabecera() {

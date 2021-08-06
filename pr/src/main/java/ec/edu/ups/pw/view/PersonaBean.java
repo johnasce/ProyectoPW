@@ -5,12 +5,13 @@ import ec.edu.ups.pw.model.Persona;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
-@ViewScoped
+@RequestScoped
 public class PersonaBean implements Serializable {
   private Persona newPersona = new Persona();
   

@@ -47,4 +47,13 @@ public class ProductoON {
       suma += p.getPrecio(); 
     return suma;
   }
+  
+  public double calcularTotal(List<Producto> carrito) {
+	    double suma = 0.0D;
+	    for (Producto p : carrito) {
+	    	suma += p.getPrecio(); 
+	    }
+	      suma = suma + suma*0.12;
+	    return suma;
+	  }
 }

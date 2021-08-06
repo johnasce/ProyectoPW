@@ -4,19 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
 public class Cliente {
-  @Id
+  
   @GeneratedValue
   private int id_cliente;
   
+  @Id
+  private String cedula;
+  
   private String nombres;
   
-  private String cedula;
   
   private String direccion;
   
@@ -24,8 +27,9 @@ public class Cliente {
   
   private String correo;
   
-  @OneToMany(mappedBy = "cliente", cascade = {CascadeType.ALL})
+  @OneToMany(mappedBy = "cliente", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
   private List<FacturaCabecera> facturas_cabeceras = new ArrayList<>();
+  
   
   public int getId_cliente() {
     return this.id_cliente;
